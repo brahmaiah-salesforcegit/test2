@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Avalara_Company_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Avalara Company Code to reference for Tax Calculation for This Opportunity.  If Not populated, uses Default Company Code specified in the currently active TaxNowSettings.</inlineHelpText>
+        <label>Avalara Company Code</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Avalara_Doc_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Default Value = Opportunity ID.
+This is the invoice number for Avalara.  If the opportunity&apos;s Avalara Status is &quot;Saved&quot;, &quot;Committed&quot;, or &quot;Void&quot;, the invoice with the corresponding Avalara Doc Code can be viewed in the Avalara Dashboard.</inlineHelpText>
+        <label>Avalara Doc Code</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Avalara_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Temporary = Opportunity Not Saved to Dashboard
+Saved = Opportunity Saved to Dashboard
+Committed = Opportunity Committed to Dashboard (Finalized) 
+Void = Opportunity Voided in Dashboard
+Automatic Tax Calculation Error
+Field Value Cannot Be Edited</inlineHelpText>
+        <label>Avalara Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Address__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Account.BillingStreet &amp; BR() &amp; Account.BillingCity &amp; &quot;, &quot; &amp;  Account.BillingState  &amp; &quot; &quot;  &amp;  Account.BillingPostalCode &amp;&quot; &quot;  &amp;  Account.BillingCountry</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>If &quot;Use Billing Address&quot; is checked in the currently active TaxNow Settings, this is the address that is used for the destination address for sales tax calculations.</inlineHelpText>
+        <label>Billing Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_County__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Account.Billing_County__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>County of Billing Address</inlineHelpText>
+        <label>Billing County</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NonTaxable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>If this is checked, the entire oportunity will be calculated as exempt from tax.
+
+Note:  If Exemption Certificate Management System (ECMS) is enabled, and the Setting is &apos;Required&apos; in your Avalara Dashboard, this checkbox will have no effect.</inlineHelpText>
+        <label>Non Taxable</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Default value is current date.  This is the invoice date for reporting purposes, and if the tax date is not entered, also the tax date.</inlineHelpText>
+        <label>Opportunity Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Tax__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Sum of Line Item Sales Tax Amounts, not including S&amp;H</inlineHelpText>
+        <label>Sales Tax</label>
+        <summarizedField>OpportunityLineItem.LineTax__c</summarizedField>
+        <summaryForeignKey>OpportunityLineItem.OpportunityId</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>ShippingAddress__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Account.ShippingStreet &amp; BR() &amp; Account.ShippingCity &amp; &quot;, &quot; &amp;  Account.ShippingState  &amp; &quot; &quot;  &amp;  Account.ShippingPostalCode &amp;&quot; &quot; &amp; Account.ShippingCountry</formula>
+        <inlineHelpText>Account Shipping Address Used for destination in Sales Tax Calculations unless Use Billing Address is checked in TaxNowSettings.</inlineHelpText>
+        <label>Shipping Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShippingTax__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Usually a hidden field - updated by GetTax and used to calculate total sales tax</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sales Tax on Shipping and Handling</inlineHelpText>
+        <label>ShippingTax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Shipping_County__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Account.Shipping_County__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>County for Shipping Address</inlineHelpText>
+        <label>Shipping County</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shipping__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Shipping and Handling amount</inlineHelpText>
+        <label>Shipping and Handling</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Tax_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>If this field has a date entered, the sales tax calculation will use the rates that were applicable on the tax Date, else the rates that are effective as of the quote date are used.</inlineHelpText>
+        <label>Tax Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Tax_Now_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>&apos;Not Calculated&apos; = Sales Tax Not Calculated
+&apos;Finalized&apos; = Opportunity is Finalized and May Not Be Changed
+&apos;Sales Tax Not Current&apos; = Sales tax is not calc. currently
+&apos;Sales Tax Current&apos; = Sales Tax Calculated &amp; Up To Date
+
+Field Value Cannot Be Edited</inlineHelpText>
+        <label>Tax Now Status</label>
+        <length>64</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Amount  +   Shipping__c +  Sales_Tax__c  +  ShippingTax__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Order Total, including S&amp;H and Sales Tax</inlineHelpText>
+        <label>Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>TrackingNumber__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Tracking Number</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VAT_No__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Buyer&apos;s Vat No</inlineHelpText>
+        <label>VAT No</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>request__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Invoice Messaging</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <webLinks>
+        <fullName>DeliveryStatus</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Delivery Status</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>http://www.fedex.com/cgi-bin/tracking?tracknumbers={!Opportunity.TrackingNumber__c}&amp;action=track&amp;language=english&amp;cntry_code=us</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Finalize_Opportunity</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Finalize Opportunity</masterLabel>
+        <openType>sidebar</openType>
+        <page>Opp_Finalize_Handler</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>OppValBillTo</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Validate Billing Address</masterLabel>
+        <openType>sidebar</openType>
+        <page>Opp_ValidateBillingAddress_Handler</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>OppValShipTo</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Validate Shipping Address</masterLabel>
+        <openType>sidebar</openType>
+        <page>Opp_ValidateShippingAddress_Handler</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Opp_Calc_Tax</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Calculate Sales Tax</masterLabel>
+        <openType>sidebar</openType>
+        <page>Opp_Calculate_Tax_Handler</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

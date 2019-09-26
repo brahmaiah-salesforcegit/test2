@@ -1,0 +1,118 @@
+<apex:page standardController="AVA_SFCORE__TaxNowSetting__c" extensions="AVA_SFCORE.AvaCreateCompany" action="{!CreateCompany}">
+<apex:form >
+<apex:PageBlock title="Company Profile">
+                
+                        <apex:pageBlockSection title="Let's make sure we have the right info to get you quickly setup !">
+                        <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                        <apex:outputLabel value="  = Required Information" />
+                                        </apex:outputPanel><br/>
+                                     
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Company Name:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!companyname}"/>
+                                        </apex:outputPanel>
+                                     
+                               </apex:pageBlockSectionItem>
+                               <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Company Code:"/>
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!companycode}" title="Special Character is not allowed"/>
+                                        </apex:outputPanel>
+                                     
+                               </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Address Line1:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!Line1}"/>
+                                        </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                     <apex:outputLabel >Address Line2:</apex:outputLabel> <apex:inputText id="Line2" value="{!Line2}"  />
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel >Address  Line3:</apex:outputLabel> <apex:inputText id="Line3" value="{!Line3}" />
+                                </apex:pageBlockSectionItem>
+                                 <apex:pageBlockSectionItem >
+                                 <apex:outputLabel value="Address City:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!City}"/>
+                                        </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Address Country:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!country}"/>
+                                        </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Address State:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!state}"/>
+                                        </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="PostalCode:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!PostalCode}"/>
+                                        </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Email:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!email}"/>
+                                        </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="First Name:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!firstname}"/>
+                                        </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                 <apex:pageBlockSectionItem >
+                                 <apex:outputLabel value="Last Name:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!lastname}"/>
+                                        </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Phone Number:" />
+                                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                                    <div class="requiredBlock"></div>
+                                        <apex:inputText value="{!phonenumber}"/>
+                                        </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Business Tax Identification Number(TIN):" />
+                                        <apex:inputText value="{!tin}"/>
+                                </apex:pageBlockSectionItem>
+                                <br/>
+                        </apex:pageBlockSection>
+                <apex:commandButton reRender="showresult,showmsg" value="Setup Company Profile" action="{!processCompany}" status="loading" />
+              <!--  <apex:commandButton value="Validate Address" action="{!validateAddress}" reRender="showresult" />-->
+                   <apex:actionstatus id="loading">
+             <apex:facet name="start">
+                <div class="waitingHolder" >
+                   <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                   <span class="waitingDescription">Loading...</span>
+                </div>
+             </apex:facet>
+           </apex:actionstatus> 
+                </apex:PageBlock>
+
+              <apex:outputPanel id="showresult">
+             <br/><apex:outputText value="{!result}" escape="false" />
+              </apex:outputPanel>
+         </apex:form>
+</apex:page>

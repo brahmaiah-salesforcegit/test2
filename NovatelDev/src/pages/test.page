@@ -1,0 +1,15 @@
+<apex:page standardController="Account">
+    hello {!$User.FirstName}<br/>
+          {!$User.LastName}<br/>
+          {!$User.Email}<br/>
+ 
+  <h1>Congratulations</h1><br/>
+  aaaaa  {!Account.name}
+  <apex:pageBlock title="hello  {!$User.LastName}"><br/>
+                                 you r in pageblock
+  
+  </apex:pageBlock>
+  <apex:detail />
+  
+  
+</apex:page>

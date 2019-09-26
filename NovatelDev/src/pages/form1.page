@@ -1,0 +1,14 @@
+<apex:page standardcontroller="contact">
+<apex:form >
+  <apex:pageBlock title="quick edit {!contact.name}">
+  <apex:pageBlockSection title="contact Details" columns="1">
+  <apex:inputField value="{!contact.phone}"/>
+  <apex:outputField value="{!contact.mobilephone}" label="mobile #"/>
+  <apex:inputText value="{!contact.email}" label="{!contact.firstname +'`s email'}"/>
+  </apex:pageBlockSection>
+  <apex:pageBlockButtons >
+  <apex:commandButton action="{!save}" value="save"/>
+  </apex:pageBlockButtons>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

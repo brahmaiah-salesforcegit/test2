@@ -1,0 +1,26 @@
+<!--<apex:page >
+  <script src="countries.js"></script>
+  <apex:form >
+        <select id="country" name="country">Country</select><br/>
+        <select name="state" id="state">State</select>
+  </apex:form>
+</apex:page>-->
+<apex:page controller="CountryPicklistController">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+  <script src="//geodata.solutions/includes/countrystatecity.js"></script>
+         <apex:form >
+            <select name="country" class="countries" id="countryId">
+                <option value="">Select Country</option>
+            </select>
+            <select name="state" class="states" id="stateId">
+                <option value="">Select State</option>
+            </select>
+            <select name="city" class="cities" id="cityId">
+                <option value="">Select City</option>
+            </select>
+            <apex:commandButton value="GetValues" action="{!getValues}"/>
+          </apex:form>
+            
+            
+  
+</apex:page>

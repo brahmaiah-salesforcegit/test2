@@ -1,0 +1,2 @@
+<apex:page standardController="AVA_SFCORE__TaxNowSetting__c" extensions="AVA_SFCORE.TestConnect" action="{!TestConnection}" >
+</apex:page>

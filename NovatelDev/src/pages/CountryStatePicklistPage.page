@@ -1,0 +1,21 @@
+<apex:page showHeader="false" controller="MyCountryStatePicklist">
+
+     <body>
+        Country:
+              <!--  <select onchange="print_state('state',this.selectedIndex);" id="country" name = "country"></select> -->
+              <select onchange="changeState()" id="country" name="country"></select>
+        State:  
+                <select name ="state" id = "state"></select>
+                <script language="javascript"> 
+              //print_country("country"," ");
+                </script>
+               <!-- <script type= "text/javascript" src = "countries.js"></script>-->
+        <apex:includeScript value="{!URLFOR($Resource.CountryStateCodesPicklist)}"/>
+        <script type="text/javascript">
+        window.onload = function(){
+        loadStates();
+        };
+        </script>
+    </body>
+    
+</apex:page>

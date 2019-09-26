@@ -1,0 +1,7 @@
+<apex:page controller="CountryStatePickListTest">
+<apex:form >
+  <apex:selectList id="countries" value="{!tmpContact.MailingCountry}" size="1" required="true">
+  <apex:selectOptions value="{!countries}"/>
+</apex:selectList>
+</apex:form>
+</apex:page>

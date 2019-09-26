@@ -1,0 +1,12 @@
+<apex:page standardController="Contact">
+    
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:inputField value="{!Contact.MailingCountryCode}"/>
+                <apex:inputField value="{!Contact.MailingStateCode}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

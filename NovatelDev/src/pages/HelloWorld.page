@@ -1,0 +1,10 @@
+<apex:page StandardController="Account" >
+  
+  <h1>Congratulations</h1><br></br>{!$User.FirstName}<br></br>
+  
+  <apex:pageBlock >
+  <b>Welcome</b><br/>
+  {!account.name}
+  </apex:pageBlock>
+  <apex:detail subject="{!account.ownerId}" relatedList="false" title="false"/>
+</apex:page>

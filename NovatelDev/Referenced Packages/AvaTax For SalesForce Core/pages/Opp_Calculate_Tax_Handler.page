@@ -1,0 +1,2 @@
+<apex:page standardController="Opportunity" extensions="AVA_SFCORE.GetTaxOpportunity" action="{!CalcTax}">
+</apex:page>

@@ -1,0 +1,15 @@
+<apex:page controller="dependentCountryandState" >
+  <apex:form >
+  country; <apex:selectList id="countries" value="{!tmpContact}" size="1" required="true">
+  <apex:selectOptions value="{!countries}"/> 
+  </apex:selectList>
+
+  state: <apex:selectList id="states" value="{!tmpState}" size="1" required="true">
+  <apex:selectOptions value="{!states}"/> 
+  </apex:selectList>
+  fieldname: <apex:selectList id="states1" value="{!field}" size="1" required="true">
+  <apex:selectOptions value="{!fields}"/> 
+  </apex:selectList>
+  <apex:commandButton value="GetValues" action="{!getValues}"/>
+  </apex:form>
+  </apex:page>

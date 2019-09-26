@@ -1,0 +1,10 @@
+<!-- visual force page-->
+
+<apex:page controller="ContactListCon" cache="true" action="{!fetchList}" contentType="application/octet-stream#ListofContact.csv"
+           showHeader="false" sidebar="false" standardStylesheets="false">
+     
+   First name, Last Name, Id 
+    <apex:repeat value="{!contacts}" var="a" >       
+         {!a.FirstName},{!a.lastName},{!a.id}
+    </apex:repeat>
+</apex:page>

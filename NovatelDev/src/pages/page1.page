@@ -1,0 +1,27 @@
+<apex:page setup="false" sidebar="false" tabstyle="Account" showHeader="true" standardController="Account" >
+<apex:sectionHeader title="Account Edit" subtitle="New Account"/>
+<apex:form >
+<apex:pageBlock title="new Account Page Block">
+<apex:pageBlockButtons location="both">
+<apex:commandButton value="save" action="{!save}"/>
+<apex:commandButton value="cancel" action="{!cancel}"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection title="Account Detail" columns="2" collapsible="true">
+<apex:inputField value="{!Account.name}"/>
+<apex:inputField value="{!Account.phone}"/>
+<apex:inputField value="{!Account.email__c}"/>
+<apex:inputField value="{!Account.website}"/>
+<apex:inputField value="{!Account.rating}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Contacts" collapsible="true" columns="2">
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Opportunities" collapsible="true"  columns="2">
+</apex:pageBlockSection>
+<apex:pageBlockSection title="cases" collapsible="true" columns="2">
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Open Activities" collapsible="true" columns="2"></apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:form>
+  
+</apex:page>

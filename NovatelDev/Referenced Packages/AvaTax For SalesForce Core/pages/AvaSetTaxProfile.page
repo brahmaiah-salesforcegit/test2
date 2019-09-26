@@ -1,0 +1,67 @@
+<apex:page standardController="AVA_SFCORE__TaxNowSetting__c" extensions="AVA_SFCORE.AvaSetTaxProfile" action="{!TestConnection}">
+<apex:sectionHeader title="" subtitle="Where should AvaTax collect tax for you? Let's take a look at it together!"/>
+    <script type="text/javascript">
+        function selectAllCheckboxes(obj,receivedInputID){
+            var inputCheckBox = document.getElementsByTagName("input");
+            for(var i=0; i<inputCheckBox.length; i++){
+                if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){
+                    inputCheckBox[i].checked = obj.checked;
+                }
+            }
+        }
+    </script>
+    <apex:form >
+        <apex:pageBlock >
+        <style>
+            body .bPageBlock .pbBody .grey .pbSubheader{
+                background-color:#ffc966;
+            }
+            body .bPageBlock .pbBody .grey .pbSubheader h3{
+                color:#000;
+            }
+            .custom3 {
+    font: red !important;
+}
+        .custom4 {
+    font: blue !important;
+}
+        </style>
+        <apex:pageBlockSection title="Good news! You have already established tax jurisdiction, and AvaTax will calculate in those locations.
+We can help you select additional tax jurisdictions based on your data in Salesforce" columns="1" id="infoPanel" collapsible="false">
+                <apex:pageBlockTable value="{!wrapEnableAccountList}" var="c" id="table2" title="Selected Accounts">
+                    <apex:column value="{!c.acc}" headerValue="State/Country"/>
+                </apex:pageBlockTable>
+                
+            </apex:pageBlockSection>
+        <apex:outputPanel styleClass="grey">
+        </apex:outputPanel>
+            
+            <apex:pageblockSection title="You have different locations here.Nexus recommendations are based on the analysis of your last 1000 transactions. AvaTax will enable all mandatory local jurisdictions for these states." collapsible="false" columns="1">
+                <apex:pageBlockTable value="{!wrapAccountList}" var="accWrap" id="table" title="State/Country" width="600px">
+                    <apex:outputLabel >{!data}</apex:outputLabel>
+                    <apex:column headerValue="State/Country" >
+                        <apex:facet name="header">
+                            <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!accWrap.selected}" id="inputId"/>
+                    </apex:column>
+                    <apex:column headerValue="State/Country" value="{!accWrap.acc}" />
+                    
+                </apex:pageBlockTable>
+                
+            </apex:pageblockSection>    <apex:commandButton value="Enable Tax Jurisdiction(s)" action="{!processSelected}" rerender="out" status="status" oncomplete="window.location.reload();" disabled="{!isDisabled}"/>
+            
+        </apex:pageBlock>
+        <apex:outputPanel id="out">
+        <apex:actionstatus id="status" startText="Enabling...">
+            <apex:facet name="stop">
+            <apex:outputText value="{!result}" escape="false" />
+           <!-- <apex:outputPanel style="color:red;">
+                    <apex:dataList value="{!result}" var="c">{!c}</apex:dataList>
+                </apex:outputPanel>-->
+                
+            </apex:facet>
+        </apex:actionstatus>
+    </apex:outputPanel>
+    </apex:form>
+</apex:page>
